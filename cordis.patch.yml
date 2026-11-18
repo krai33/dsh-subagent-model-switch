@@ -1,0 +1,6 @@
+# Registers the subagentRoute service (Typert RPC namespace `subagentRoute`).
+# The service is idempotent per composition and exposes no client face.
+- insert:
+    - id: subagent-model-switch
+      name: dsh-subagent-model-switch
+      inject: [agents, llm, sessions, sessionQuery, typertGateway]

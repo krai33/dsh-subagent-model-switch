@@ -1,18 +1,9 @@
 import { defineConfig, type UserConfig } from 'tsdown'
 
-const host: UserConfig = {
-  name: 'host',
-  entry: { index: 'src/host/index.ts' },
-  outDir: 'lib',
-  format: ['esm'],
-  platform: 'node',
-  target: 'es2022',
-  fixedExtension: false,
-  dts: true,
-  clean: true,
-  // dsh-* and @deepseek-ai/cordis resolve from the host profile's node_modules.
-  deps: { neverBundle: specifier => !specifier.startsWith('.') },
-}
+// Host half (lib/index.js + lib/index.d.ts) is emitted by `tsc` — standard
+// TC39 decorators in @Remote must reach Node untranspiled-safe, and tsc's
+// NodeNext output matches the upstream dsh host packages. This config builds
+// only the standalone CLI artifact.
 
 const cli: UserConfig = {
   name: 'cli',
@@ -24,7 +15,9 @@ const cli: UserConfig = {
   fixedExtension: false,
   dts: false,
   clean: false,
-  deps: { neverBundle: specifier => !specifier.startsWith('.') },
+  // The CLI is dependency-free (global fetch/WebSocket in Node >= 22).
+  deps: { neverBundle: () => false },
+  banner: { js: '#!/usr/bin/env node' },
 }
 
-export default defineConfig([host, cli])
+export default defineConfig([cli])

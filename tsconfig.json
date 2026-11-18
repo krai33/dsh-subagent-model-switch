@@ -8,8 +8,11 @@
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "verbatimModuleSyntax": true,
-    "noEmit": true
+    "verbatimModuleSyntax": false,
+    "outDir": "lib",
+    "rootDir": "src/host",
+    "declaration": true,
+    "sourceMap": false
   },
-  "include": ["src/**/*.ts", "tsdown.config.ts"]
+  "include": ["src/host/**/*.ts"]
 }

@@ -33,7 +33,7 @@
     "@deepseek-ai/dsh-typert-protocol": "*"
   },
   "scripts": {
-    "build": "tsdown",
+    "build": "tsc && tsdown",
     "check": "tsc --noEmit"
   },
   "devDependencies": {

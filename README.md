@@ -53,8 +53,11 @@ Raw RPC (any client that can POST the host's `/api` channel):
 ```
 POST /api/subagentRoute/switch
 {"type":"client-request","rpcId":"1","method":"subagentRoute/switch",
- "payload":{"args":{"sessionId":"…","provider":"zai","model":"glm-5.3"}}}
+ "payload":{"args":{"request":{"sessionId":"…","provider":"zai","model":"glm-5.3"}}}}
 ```
+
+A launch token minted cookie (`GET /?token=…` → 303) or any authenticated
+operator session authorizes the call.
 
 Response: `{"selected":{…},"lastUsed":{…}}` (previous route, when one exists).
 

@@ -49,7 +49,7 @@ const response = await fetch(url, {
     type: 'client-request',
     rpcId: '1',
     method: endpoint,
-    payload: { args: { sessionId, provider, model, ...(reasoningEffort === undefined ? {} : { reasoningEffort }) } },
+    payload: { args: { request: { sessionId, provider, model, ...(reasoningEffort === undefined ? {} : { reasoningEffort }) } } },
   }),
 })
 

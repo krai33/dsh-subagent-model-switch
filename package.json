@@ -44,5 +44,11 @@
     "@types/node": "^24",
     "tsdown": "^0.22.2",
     "typescript": "^5.9.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiwa-deng/dsh-subagent-model-switch.git"
+  },
+  "license": "MIT",
+  "author": "xiwa"
 }
